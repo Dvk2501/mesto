@@ -24,8 +24,8 @@ function qs(selector) {
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  qs('.profile__title').textContent = qs('.popup__text_name').value;
-  qs('.profile__subtitle').textContent = qs('.popup__text_about').value;
+  qs('.profile__title').textContent = qs('.popup__text_type_name').value;
+  qs('.profile__subtitle').textContent = qs('.popup__text_type_about').value;
   closeEditForm();
 }
 

@@ -1,11 +1,18 @@
 .element {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  row-gap: 20px;
+  column-gap: 17px;
   margin: 0;
   padding: 0;
-  width: 282px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-sizing: border-box;
-  position: relative;
   list-style: none;
-  color: black;
+}
+
+@media screen and (max-width: 480px) {
+  .element {
+    display: flex;
+    flex-direction: column;
+    column-gap: 0;
+  }
 }
