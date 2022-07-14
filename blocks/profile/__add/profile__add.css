@@ -1,0 +1,24 @@
+.profile__add {
+  margin: 0;
+  padding: 0;
+  background: transparent url(../../../images/Add\ Button.svg) center no-repeat;
+  background-size: contain;
+  border: none;
+  border-radius: 2px;
+  width: 150px;
+  height: 50px;
+  align-self: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.profile__add:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 480px) {
+  .profile__add {
+    background: url(../../../images/Add\ Button-mobile.svg);
+    width: 282px;
+  }
+}
