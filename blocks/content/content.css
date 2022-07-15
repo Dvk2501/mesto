@@ -7,7 +7,8 @@
   flex: 1;
 }
 
-@media screen and (max-width: 480px) {
+
+@media screen and (max-width: 1000px) {
   .content {
     width: calc(100% - 2 * 19px);
   }

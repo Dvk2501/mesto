@@ -1,34 +1,68 @@
-const openButton = document.querySelector ('.profile__button')
-const closeButton = document.querySelector ('.popup__close')
-const popup = document.querySelector ('.popup')
-const section = document.querySelector ('section')
-const firstname = document.querySelector ('name')
+const openButton = document.querySelector ('.profile__button');
+const closeButton= document.querySelector ('.popup__close');
+const popupNode = document.querySelector ('.popup');
+const profilename = document.querySelector ('.profile__title');
+const profilejob = document.querySelector ('.profile__subtitle');
+const root = document.querySelector ('.root');
+let formElement = document.querySelector('.popup__form');
+let nameInput = formElement.querySelector('.form__input_name');
+let jobInput = formElement.querySelector ('.form__input_job');
+
+openButton.addEventListener('click',function() {
+  openPopup (popupNode)
+})
 
 
-function popupOpen (e) {
-  e.preventDefault()
-  popup.classList.add('popup_opened')
+root.addEventListener('click', closePopupButtonClick)
+
+function openPopup (modal) {
+modal.classList.add('popup_opened')
 }
 
-function popupClose (e) {
-  e.preventDefault()
-  popup.classList.remove('popup_opened')
+function closePopup(modal) {
+  modal.classList.remove('popup_opened')
 }
 
-openButton.addEventListener('click', popupOpen);
-closeButton.addEventListener('click', popupClose)
 
-function qs(selector) {
-  return document.querySelector(selector);
+function closePopupButtonClick (evt) {
+
+const closeBtn = evt.target;
+
+if (closeBtn.classList.contains('popup__close')) {
+  const currentPopup = closeBtn.closest('.popup');
+  closePopup(currentPopup)
+ }
 }
 
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-  qs('.profile__title').textContent = qs('.form__input_name').value;
-  qs('.profile__subtitle').textContent = qs('.form__input_job').value;
-  closeEditForm();
+
+
+function setPopupInputvalue() {
+  nameInput.value = profilename.textContent;
+  jobInput.value = profilejob.textContent;
 }
 
-function closeEditForm() {}
+function setNodeTextValue() {
+  profilename.textContent = nameInput.value;
+profilejob.textContent = jobInput.value;
+}
 
-document.getElementById('submit').addEventListener('click', formSubmitHandler);
+
+function formSubmitHandler (evt) {
+    evt.preventDefault();
+   setNodeTextValue();
+   closePopup(popupNode)
+}
+
+
+openButton.addEventListener ('click', function() {
+  setPopupInputvalue()
+  openPopup(popupNode)
+})
+
+
+
+formElement.addEventListener('submit', formSubmitHandler);
+
+
+
+
