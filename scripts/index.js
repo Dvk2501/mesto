@@ -4,8 +4,8 @@ const popupNode = document.querySelector(".popup");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 const formElement = document.querySelector(".popup__form");
-const nameInput = formElement.querySelector(".form__input_name");
-const jobInput = formElement.querySelector(".form__input_job");
+const nameInput = formElement.querySelector(".form__input_type_name");
+const jobInput = formElement.querySelector(".form__input_type_job");
 
 function openPopup(modal) {
   modal.classList.add("popup_opened");
