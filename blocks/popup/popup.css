@@ -1,6 +1,5 @@
 .popup {
   display: none;
-  opacity: 1;
   transition: opacity 0.8s linear;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   align-items: center;

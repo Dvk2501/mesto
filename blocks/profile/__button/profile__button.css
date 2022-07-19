@@ -1,5 +1,5 @@
 .profile__button {
-  background: transparent url(../../../images/Edit\ Button.svg);
+  background: transparent url(../../../images/EditButton.svg);
   background-size: contain;
   background-repeat: no-repeat;
   border: none;
@@ -8,6 +8,9 @@
   margin-top: 15px;
   cursor: pointer;
   transition: 0.3s ease;
+  background-color: none;
+  border: none;
+  outline: none;
 }
 
 .profile__button:hover {
