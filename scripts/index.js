@@ -13,7 +13,6 @@ const newCardName = document.querySelector('.form__input_type_name-card');
 const newCardUrl = document.querySelector('.form__input_type_url-card');
 const elementsList = document.querySelector('.elements');
 const formElementCard = document.querySelector('.popup__form_card');
-const root = document.querySelector('.page');
 const element = document.querySelector('.element');
 const templateElement = document
   .querySelector('#element-item-template')
@@ -82,7 +81,7 @@ function closePopupByClick(evt) {
   }
 }
 
-function formSubmitProfile() {
+function addEditProfileSubmitHandler() {
   formElementProfile.addEventListener('submit', function (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
@@ -91,7 +90,7 @@ function formSubmitProfile() {
   });
 }
 
-function addEventCard() {
+function addNewCardSubmitHandler () {
   formElementCard.addEventListener('submit', function (evt) {
     evt.preventDefault();
     const element = createCard(newCardName.value, newCardUrl.value);
@@ -110,8 +109,10 @@ addNewCardButton.addEventListener('click', function () {
   newCardUrl.value = '';
 });
 
-root.addEventListener('click', closePopupByClick);
+popupProfileInfo.addEventListener('click', closePopupByClick);
+popupNewCard.addEventListener('click', closePopupByClick);
+popupImgCard.addEventListener('click', closePopupByClick);
 
-formSubmitProfile();
-addEventCard();
+addEditProfileSubmitHandler();
+addNewCardSubmitHandler ();
 creareInitialCards();
