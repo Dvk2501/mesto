@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
 
     <link rel="stylesheet" href="./pages/index.css" />
+    <script src="./scripts/validate.js" defer></script>
     <script src="./scripts/cards.js" defer></script>
     <script src="./scripts/index.js" defer></script>
 
@@ -44,7 +45,7 @@
       <section class="elements"></section>
     </main>
     <footer class="page__footer footer">
-      <p class="footer__copyright">&copy; 2022 Кравченко Дмитрий</p>
+      <p class="footer__copyright">&copy; 2022 mesto</p>
     </footer>
     <div class="popup popup_type_new-info">
       <div class="popup__container">
@@ -64,19 +65,23 @@
               type="text"
               name="username"
               id="name"
-              class="form__input form__input_type_name"
+              class="form__input form__input_type_name form__error_visible"
+              minlength="2"
+              maxlength="40"
               required
             />
-
+              <span id = "name-error" class = "form__input-error"></span>
             <input
               type="text"
               name="job"
               id="job"
-              class="form__input form__input_type_job"
+              class="form__input form__input_type_job form__error_visible"
+              minlength="2"
+              maxlength="200"
               required
             />
-
-            <button type="submit" id="submit_info" class="form__submit">
+            <span id = "job-error" class = "form__input-error"></span>
+            <button type="submit" id="submit_info" class="form__submit ">
               Сохранить
             </button>
           </fieldset>
@@ -91,26 +96,28 @@
           class="popup__close"
         ></button>
         <h3 class="popup__title">Новое место</h3>
-        <form name="edit-form" class="popup__form form popup__form_card">
+        <form novalidate name="edit-form" class="popup__form form popup__form_card">
           <input
             type="text"
             name="url-name"
             id="url-name"
-            class="form__input form__input_type_name-card"
+            class="form__input form__input_type_name-card form__error_visible"
             placeholder="Название"
+            minlength="2"
+            maxlength="30"
             required
           />
-
+          <span id="url-name-error" class="form__input-error"></span>
           <input
             type="url"
             name="url-card"
             id="url-card"
-            class="form__input form__input_type_url-card"
+            class="form__input form__input_type_url-card form__error_visible"
             placeholder="Ссылка на картинку"
             required
           />
-
-          <button type="submit" id="submit-card" class="form__submit">
+          <span id="url-card-error" class="form__input-error"></span>
+          <button type="submit" id="submit-card" class="form__submit ">
             Создать
           </button>
         </form>

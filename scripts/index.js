@@ -21,6 +21,7 @@ const cardText = document.querySelector('.element__title');
 const cardImage = document.querySelector('.element__image');
 const popupCardText = document.querySelector('.popup__caption');
 const popupCardImg = document.querySelector('.popup__image');
+const popupOverlay = document.querySelectorAll(".popup");
 
 function createCard(name, link) {
   const cardElement = templateElement.cloneNode(true);
@@ -58,19 +59,33 @@ function creareInitialCards() {
   initialCards.forEach((item) => renderCard(item, elementsList));
 }
 
+function closePopup(modal) {
+  modal.classList.remove('popup_opened');
+  document.removeEventListener("keydown", closeByEsc);
+}
+
+function closeByEsc(evt) {
+  if (evt.keyCode === 27) {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+}
+
 function openPopup(modal) {
   modal.classList.add('popup_opened');
+  document.addEventListener("keydown", closeByEsc);
 }
 
 function addNewInfo() {
   openPopup(popupProfileInfo);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  let eventInput = new Event("input"); //создаем событие
+
+  nameInput.dispatchEvent(eventInput) //запускаем событие на инпуте
+  jobInput.dispatchEvent(eventInput) //запускаем событие на инпуте
 }
 
-function closePopup(modal) {
-  modal.classList.remove('popup_opened');
-}
 
 function closePopupByClick(evt) {
   const closeBtn = evt.target;
@@ -80,6 +95,12 @@ function closePopupByClick(evt) {
     closePopup(currentPopup);
   }
 }
+
+popupOverlay.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    closePopup(evt.target);
+  });
+});
 
 function addEditProfileSubmitHandler() {
   formElementProfile.addEventListener('submit', function (evt) {
@@ -103,15 +124,17 @@ editPofileButton.addEventListener('click', function () {
   addNewInfo(popupProfileInfo);
 });
 
-addNewCardButton.addEventListener('click', function () {
+
+
+addNewCardButton.addEventListener('click',  (config) => {
+  formElementCard.reset()
+  const inputList = Array.from(formElementCard.querySelectorAll(config.inputSelector));
+  const buttonElement = formElementCard.querySelector(config.submitButtonSelector);
+  toggleButtonState(inputList, buttonElement,config);
   openPopup(popupNewCard);
-  newCardName.value = '';
-  newCardUrl.value = '';
 });
 
-popupProfileInfo.addEventListener('click', closePopupByClick);
-popupNewCard.addEventListener('click', closePopupByClick);
-popupImgCard.addEventListener('click', closePopupByClick);
+[popupProfileInfo, popupNewCard, popupImgCard].forEach(popup => popup.addEventListener('click', closePopupByClick));
 
 addEditProfileSubmitHandler();
 addNewCardSubmitHandler ();
