@@ -58,7 +58,7 @@ const enableValidation = (config) => {
   });
 };
 
-const validateSelector = {
+const validationConfig = {
   formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit',
@@ -67,4 +67,4 @@ const validateSelector = {
   errorClass: 'form__input-error_active'
 }
 
-enableValidation(validateSelector);
+enableValidation(validationConfig);

@@ -1,5 +1,4 @@
-const editPofileButton = document.querySelector('.profile__button');
-const popupNode = document.querySelector('.popup');
+const editProfileButton = document.querySelector('.profile__button');
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
 const formElementProfile = document.querySelector('.popup__form_profile');
@@ -11,20 +10,19 @@ const popupNewCard = document.querySelector('.popup_type_new-card');
 const popupImgCard = document.querySelector('.popup_type_image');
 const newCardName = document.querySelector('.form__input_type_name-card');
 const newCardUrl = document.querySelector('.form__input_type_url-card');
-const elementsList = document.querySelector('.elements');
+const cardsContainer = document.querySelector('.elements');
 const formElementCard = document.querySelector('.popup__form_card');
-const element = document.querySelector('.element');
-const templateElement = document
+const cardTemplate = document
   .querySelector('#element-item-template')
   .content.querySelector('.element');
-const cardText = document.querySelector('.element__title');
-const cardImage = document.querySelector('.element__image');
 const popupCardText = document.querySelector('.popup__caption');
 const popupCardImg = document.querySelector('.popup__image');
-const popupOverlay = document.querySelectorAll(".popup");
+const popupList = document.querySelectorAll(".popup");
+const inputList = Array.from(formElementCard.querySelectorAll('.form__input'));
+const buttonElement = formElementCard.querySelector('.form__submit');
 
 function createCard(name, link) {
-  const cardElement = templateElement.cloneNode(true);
+  const cardElement = cardTemplate.cloneNode(true);
   const newCardText = cardElement.querySelector('.element__title');
   const newCardImg = cardElement.querySelector('.element__image');
   const deleteCardBtn = cardElement.querySelector('.element__delete');
@@ -55,8 +53,8 @@ function renderCard(data, container) {
   container.prepend(card);
 }
 
-function creareInitialCards() {
-  initialCards.forEach((item) => renderCard(item, elementsList));
+function createInitialCards() {
+  initialCards.forEach((item) => renderCard(item, cardsContainer));
 }
 
 function closePopup(modal) {
@@ -76,14 +74,13 @@ function openPopup(modal) {
   document.addEventListener("keydown", closeByEsc);
 }
 
-function addNewInfo() {
-  openPopup(popupProfileInfo);
+function openEditProfilePopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  let eventInput = new Event("input"); //создаем событие
-
-  nameInput.dispatchEvent(eventInput) //запускаем событие на инпуте
-  jobInput.dispatchEvent(eventInput) //запускаем событие на инпуте
+  const eventInput = new Event("input");
+  nameInput.dispatchEvent(eventInput)
+  jobInput.dispatchEvent(eventInput)
+  openPopup(popupProfileInfo);
 }
 
 
@@ -96,7 +93,7 @@ function closePopupByClick(evt) {
   }
 }
 
-popupOverlay.forEach((popup) => {
+popupList.forEach((popup) => {
   popup.addEventListener("click", (evt) => {
     closePopup(evt.target);
   });
@@ -114,21 +111,19 @@ function addEditProfileSubmitHandler() {
 function addNewCardSubmitHandler () {
   formElementCard.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    const element = createCard(newCardName.value, newCardUrl.value);
-    elementsList.prepend(element);
+    const createNewCard = createCard(newCardName.value, newCardUrl.value);
+    cardsContainer.prepend(createNewCard);
     closePopup(popupNewCard);
   });
 }
 
-editPofileButton.addEventListener('click', function () {
-  addNewInfo(popupProfileInfo);
+editProfileButton.addEventListener('click', function () {
+  openEditProfilePopup(popupProfileInfo);
 });
 
 addNewCardButton.addEventListener('click',  () => {
   formElementCard.reset()
-  const inputList = Array.from(formElementCard.querySelectorAll('.form__input'));
-  const buttonElement = formElementCard.querySelector('.form__submit');
-  toggleButtonState(inputList, buttonElement,validateSelector);
+  toggleButtonState(inputList, buttonElement,validationConfig);
   openPopup(popupNewCard);
 });
 
@@ -136,4 +131,4 @@ addNewCardButton.addEventListener('click',  () => {
 
 addEditProfileSubmitHandler();
 addNewCardSubmitHandler ();
-creareInitialCards();
+createInitialCards();
