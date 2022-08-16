@@ -111,8 +111,8 @@ function addEditProfileSubmitHandler() {
 function addNewCardSubmitHandler () {
   formElementCard.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    const createNewCard = createCard(newCardName.value, newCardUrl.value);
-    cardsContainer.prepend(createNewCard);
+    const card = createCard(newCardName.value, newCardUrl.value);
+    cardsContainer.prepend(card);
     closePopup(popupNewCard);
   });
 }
