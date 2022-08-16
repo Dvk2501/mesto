@@ -27,23 +27,23 @@ function hasInvalidInput(inputList) {
   });
 }
 
-const toggleButtonState = (inputList, buttonElement,inactiveButtonClass) => {
+const toggleButtonState = (inputList, buttonElement,config) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.disabled = false;
   }
 };
 
-const setEventListeners = (formElement, {inputSelector, submitButtonSelector, inactiveButtonClass, ...config}) => {
+const setEventListeners = (formElement,config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input',  () =>  {
       checkInputValidity(formElement, inputElement,config);
-      toggleButtonState(inputList, buttonElement,inactiveButtonClass);
+      toggleButtonState(inputList, buttonElement,config);
     });
   });
 };
@@ -58,12 +58,13 @@ const enableValidation = (config) => {
   });
 };
 
-
-enableValidation({
+const validateSelector = {
   formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit',
   inactiveButtonClass: 'form__submit_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'form__input-error_active'
-});
+}
+
+enableValidation(validateSelector);

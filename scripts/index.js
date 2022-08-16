@@ -124,11 +124,11 @@ editPofileButton.addEventListener('click', function () {
   addNewInfo(popupProfileInfo);
 });
 
-addNewCardButton.addEventListener('click',  ({inactiveButtonClass}) => {
+addNewCardButton.addEventListener('click',  () => {
   formElementCard.reset()
   const inputList = Array.from(formElementCard.querySelectorAll('.form__input'));
   const buttonElement = formElementCard.querySelector('.form__submit');
-  toggleButtonState(inputList, buttonElement,inactiveButtonClass);
+  toggleButtonState(inputList, buttonElement,validateSelector);
   openPopup(popupNewCard);
 });
 
