@@ -159,7 +159,7 @@ popupList.forEach((popup) =>
 formElementCard.addEventListener('submit', addNewCardSubmitHandler);
 
 popupList.forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
+  popup.addEventListener('mousedown', (evt) => {
     closePopup(evt.target);
   });
 });
