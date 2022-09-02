@@ -1,14 +1,10 @@
-const popupImgCard = document.querySelector(".popup_type_image");
-const popupCardText = document.querySelector(".popup__caption");
-const popupCardImg = document.querySelector(".popup__image");
-
-
 export class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector,) {
     this._title = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._cardElement = this._getTemplate();
+    this.handleOpenPopup = data.handleOpenPopup
   }
 
   createCard() {
@@ -43,7 +39,7 @@ export class Card {
       });
 
       this._cardElement.querySelector(".element__image").addEventListener("click", () => {
-      this._handleOpenPopup();
+      this.handleOpenPopup(this._title, this._link);
     });
   }
 
@@ -55,10 +51,4 @@ export class Card {
     this._cardElement.remove();
   }
 
-  _handleOpenPopup() {
-    popupCardText.textContent = this._title
-    popupCardImg.src = this._link
-    popupImgCard.classList.add('popup_opened')
-
-  }
 }
