@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "4-7 спринт Одностраничный сайт ## Основные прорабатываемые технологии * Валидация форм * Попапы * Добавление и удаление лайка * увеличение картинки по нажатию * Редактирование профиля * Добавление карточки через попап * Css * JavaScript * ООП",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dvk2501/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dvk2501/mesto/issues"
+  },
+  "homepage": "https://github.com/Dvk2501/mesto#readme"
+}

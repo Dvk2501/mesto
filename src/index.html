@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
 
-    <link rel="stylesheet" href="./pages/index.css" />
-    <script type="module" src="./scripts/index.js" defer></script>
+    <link rel="stylesheet" href="./scripts/pages/index.css" />
+    <script type="module" src="./scripts/pages/index.js" defer></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Kravchenko Dmitry" />
@@ -97,7 +97,7 @@
         <form novalidate name="edit-form" class="popup__form form popup__form_card">
           <input
             type="text"
-            name="url-name"
+            name="name"
             id="url-name"
             class="form__input form__input_type_name-card"
             placeholder="Название"
@@ -108,7 +108,7 @@
           <span id="url-name-error" class="form__input-error"></span>
           <input
             type="url"
-            name="url-card"
+            name="link"
             id="url-card"
             class="form__input form__input_type_url-card"
             placeholder="Ссылка на картинку"
