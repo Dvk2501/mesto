@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
 
-    <link rel="stylesheet" href="./scripts/pages/index.css" />
     <script type="module" src="./scripts/pages/index.js" defer></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,16 +12,16 @@
 
   <body class="page">
     <header class="header page__header">
-      <img class="header__logo" src="./images/Vector.svg" alt="логотип" />
+      <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="логотип" >
     </header>
     <main class="content">
       <section class="profile page__profile">
         <div class="profile__card">
           <img
             class="profile__image"
-            src="./images/image.jpg"
+            src="<%=require('./images/image.jpg')%>"
             alt="изображение профиля"
-          />
+          >
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button
