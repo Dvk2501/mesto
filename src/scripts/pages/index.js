@@ -16,11 +16,11 @@ import {
   formElementCard,
 } from '../utils/constans.js';
 
-const formValidProfile = new FormValidator(config, formElementProfile);
-formValidProfile.enableValidation();
+const validatorForEditProfileForm = new FormValidator(config, formElementProfile);
+validatorForEditProfileForm.enableValidation();
 
-const formValidCard = new FormValidator(config, formElementCard);
-formValidCard.enableValidation();
+const validatorForEditCardForm = new FormValidator(config, formElementCard);
+validatorForEditCardForm.enableValidation();
 
 const viewImagePopup = new PopupWithImage('.popup_type_image');
 
@@ -49,8 +49,8 @@ const popupEditForm = new PopupWithForm({
 
 const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_type_new-card',
-  submitHandler: (formDataObject) => {
-    cardsList.addItem(createCard(formDataObject));
+  submitHandler: (inputValues) => {
+    cardsList.addItem(createCard(inputValues));
     popupAddCard.close();
   },
 });
@@ -81,12 +81,12 @@ editProfileButton.addEventListener('click', () => {
     username: info.username,
     job: info.job,
   });
-  formValidProfile.resetError();
+  validatorForEditProfileForm.resetError();
   popupEditForm.open();
 });
 
 addNewCardButton.addEventListener('click', () => {
-  formValidCard.resetError();
+  validatorForEditCardForm.resetError();
   popupAddCard.open();
 });
 
