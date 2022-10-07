@@ -113,7 +113,7 @@ const PopupEditAvatar = new PopupWithForm({
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        popupEditForm.loading(false);
+        PopupEditAvatar.loading(false);
       });
   },
 });
@@ -125,12 +125,12 @@ const popupAddCard = new PopupWithForm({
     api
       .addCard(inputValues)
       .then((inputValues) => {
-        cardsList.addItem(createCard(inputValues));
+        cardsList.addNewItem(createCard(inputValues));
         popupAddCard.close(inputValues);
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        popupEditForm.loading(false);
+        popupAddCard.loading(false);
       });
   },
 });
