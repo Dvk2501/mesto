@@ -41,4 +41,6 @@
 @import url(../../blocks/form/__input-error/form__input-error.css);
 @import url(../../blocks/form/__input-error/_active/form__input-error_active.css);
 @import url(../../blocks/form/__input/_type/form__input_type-error.css);
-
+@import url(../../blocks/profile/__image-btn/profile__image-btn.css);
+@import url(../../blocks/element/__like-number/element__like-number.css);
+@import url(../../blocks/element/__likes/element__likes.css);
